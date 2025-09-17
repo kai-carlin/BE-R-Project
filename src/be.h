@@ -1,18 +1,4 @@
-#include <Arduino.h>
-
-
-// put function declarations here:
-int myFunction(int, int);
-
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
+#include <SD.h>
 
 class BE {
   private:
@@ -34,14 +20,13 @@ class BE {
 
 
   public:
-    BE(){
-      dataFile = SD.open("Log.txt", FILE_WRITE);
-    }
-    bool collectData(){
-      return false;
-    }
-    bool writeData(){
-      return false;
-    }
+    BE(File _dataFile, float _timeInterval, int _motorPercent, int _peltier1Percent, int _peltier2Percent);
+    bool collectData();
+    bool writeData();
+    bool initDisplay();
+    bool display();
+    bool handleInput();
+    ...
+
 
 };
