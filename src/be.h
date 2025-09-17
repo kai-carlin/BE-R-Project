@@ -3,6 +3,7 @@
 class BE {
   private:
     File dataFile;
+    bool sdCardValidFlag;
     float timeInterval; //time between each datapoint in logged
     int motorPercent; //0-255 value of pump level
     int peltier1Percent; //0-255 value of peltier1 level
@@ -18,15 +19,15 @@ class BE {
       int peltier2; //copy of peltier2 set level
     };
 
-
   public:
+    BE(); //fix this
     BE(File _dataFile, float _timeInterval, int _motorPercent, int _peltier1Percent, int _peltier2Percent);
     bool collectData();
     bool writeData();
     bool initDisplay();
     bool display();
-    bool handleInput();
-    ...
+    bool handleInput(); //use polling, add pauses and mayhaps even schmitt triggers.
+    
 
 
 };
