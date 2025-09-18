@@ -1,4 +1,8 @@
+#ifndef BE_H
+#define BE_H
+
 #include <SD.h>
+#include "pinMappings.h"
 
 class BE {
   private:
@@ -21,13 +25,15 @@ class BE {
 
   public:
     BE(); //fix this
-    BE(File _dataFile, float _timeInterval, int _motorPercent, int _peltier1Percent, int _peltier2Percent);
-    bool collectData();
-    bool writeData();
+    BE(File _dataFile, pinMappings& pins, float _timeInterval, int _motorPercent, int _peltier1Percent, int _peltier2Percent);
+    bool collectData(); //pull data from sensors and store in struct
+    bool writeData(); //turn on light while writing to indicate unresponsive
     bool initDisplay();
-    bool display();
+    bool display(); //update screen
     bool handleInput(); //use polling, add pauses and mayhaps even schmitt triggers.
     
 
 
 };
+
+#endif

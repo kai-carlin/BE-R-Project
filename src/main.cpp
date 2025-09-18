@@ -1,6 +1,11 @@
 #include <Arduino.h>
 #include "be.h"
 
+const struct pinMappings{
+  int SDsda = 0;
+};
+
+File _dataFile;
 
 BE reactor();
 
